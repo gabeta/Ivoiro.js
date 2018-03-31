@@ -1,0 +1,23 @@
+{
+  "name": "ivoiro",
+  "version": "1.0.0",
+  "description": "Package pour la gestion des format des chiffres version ivoirien",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Côte d'ivoire",
+    "JavaScript",
+    "Format monetaire",
+    "Vérification du réseaux mobile d'un numéro",
+    "Made in CI",
+    "EnighmaLab",
+    "Aneya.inc"
+  ],
+  "author": "Gabeta Soro",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.8.1"
+  }
+}

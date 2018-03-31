@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ivoiro, le plugin pour vous faciliter la tâche</title>
+</head>
+
+<body>
+    <span class="cfa-format">100000</span> <br>
+    <span class="cfa-format">100000</span> <br>
+    <span class="cfa-format">100000</span> <br>
+    <input type="text" id="input-number">
+</body>
+<script src="../dist/ivoiro.js"></script>
+<script>
+    var ivoiro = new Ivoiro({
+        idName: 'input-number'
+    });
+
+    var ivoiro2 = new Ivoiro({
+        className: 'cfa-format'
+    });
+
+    ivoiro2.formatToCfa(' ');
+</script>
+
+</html>
