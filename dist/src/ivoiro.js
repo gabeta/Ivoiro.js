@@ -17,7 +17,7 @@ var Ivoiro = /** @class */ (function () {
             .map(function (propertyType) {
             var property = _this.propertyGetter[propertyType];
             _this.propertyType = propertyType;
-            if (propertyType === 'idName') {
+            if (propertyType === 'id') {
                 _this.property = document.getElementById(property);
             }
             else {

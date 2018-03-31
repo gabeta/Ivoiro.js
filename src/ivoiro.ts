@@ -22,7 +22,7 @@ class Ivoiro {
             .map((propertyType) => {
                 let property = this.propertyGetter[propertyType];
                 this.propertyType = propertyType
-                if (propertyType === 'idName') {
+                if (propertyType === 'id') {
                     this.property = document.getElementById(property);
                 }else{
                     this.property = document.getElementsByClassName(property);
