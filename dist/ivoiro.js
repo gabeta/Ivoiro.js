@@ -3,7 +3,6 @@ var Ivoiro = /** @class */ (function () {
     function Ivoiro(propertyGetter) {
         this.propertyGetter = propertyGetter;
         this.initialyzeProperty();
-        console.log(this.property);
     }
     /**
      * Initialisation du composant html servant à gérer les données
@@ -17,6 +16,7 @@ var Ivoiro = /** @class */ (function () {
         Object.keys(this.propertyGetter)
             .map(function (propertyType) {
             var property = _this.propertyGetter[propertyType];
+            _this.propertyType = propertyType;
             if (propertyType === 'idName') {
                 _this.property = document.getElementById(property);
             }
@@ -25,13 +25,29 @@ var Ivoiro = /** @class */ (function () {
             }
         });
     };
+    /**
+    * Formattage des valeurs en CFA
+    *
+    * Cette fonction sert principalement à formatter un chiffre
+    * AU format CFA
+    */
     Ivoiro.prototype.formatToCfa = function (separator, prefix) {
-        for (var i = 0; i < this.property.length; i++) {
-            var intValue = parseInt(this.property[i].innerText);
+        if (this.propertyType == 'className') {
+            for (var i = 0; i < this.property.length; i++) {
+                var intValue = parseInt(this.property[i].innerText);
+                var text = intValue.toString();
+                if (text.length > 3) {
+                    var value = this.translateNumber(text, separator);
+                    this.property[i].innerText = value;
+                }
+            }
+        }
+        else {
+            var intValue = parseInt(this.property.innerText);
             var text = intValue.toString();
             if (text.length > 3) {
                 var value = this.translateNumber(text, separator);
-                this.property[i].innerText = value;
+                this.property.innerText = value;
             }
         }
     };

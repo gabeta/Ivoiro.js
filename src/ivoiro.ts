@@ -8,7 +8,6 @@ class Ivoiro {
     constructor(propertyGetter: Object) {
         this.propertyGetter = propertyGetter;
         this.initialyzeProperty();
-        console.log(this.property)
     }
 
     /**
@@ -22,6 +21,7 @@ class Ivoiro {
         Object.keys(this.propertyGetter)
             .map((propertyType) => {
                 let property = this.propertyGetter[propertyType];
+                this.propertyType = propertyType
                 if (propertyType === 'idName') {
                     this.property = document.getElementById(property);
                 }else{
@@ -31,16 +31,33 @@ class Ivoiro {
             })
     }
 
+    /**
+    * Formattage des valeurs en CFA
+    * 
+    * Cette fonction sert principalement à formatter un chiffre 
+    * AU format CFA
+    */
     formatToCfa(separator: string, prefix: Boolean): void{
-        
-        for (var i = 0; i < this.property.length; i++) {
-            var intValue = parseInt(this.property[i].innerText);
+
+        if(this.propertyType == 'className'){
+            for (var i = 0; i < this.property.length; i++) {
+                var intValue = parseInt(this.property[i].innerText);
+                var text = intValue.toString();
+                if(text.length > 3) {
+                    let value = this.translateNumber(text,separator);
+                    this.property[i].innerText = value
+                }
+            }
+
+        }else{
+            var intValue = parseInt(this.property.innerText);
             var text = intValue.toString();
-            if(text.length > 3) {
-                let value = this.translateNumber(text,separator);
-                this.property[i].innerText = value
+            if (text.length > 3) {
+                let value = this.translateNumber(text, separator);
+                this.property.innerText = value
             }
         }
+
 
     }
 

@@ -11,6 +11,12 @@ declare class Ivoiro {
      * l'élement par le moyen spécifié lors de l'initialisation du composant
      */
     initialyzeProperty(): void;
+    /**
+    * Formattage des valeurs en CFA
+    *
+    * Cette fonction sert principalement à formatter un chiffre
+    * AU format CFA
+    */
     formatToCfa(separator: string, prefix: Boolean): void;
     translateNumber(number: string, separator: string): String;
     translator(numberArray: Array<any>, separator: string, splicer: number): string;

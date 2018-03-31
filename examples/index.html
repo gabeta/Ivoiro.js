@@ -21,12 +21,13 @@
     <span class="cfa-format">1000000000</span> <br>
     <span class="cfa-format">10000000000</span> <br>
     <span class="cfa-format">100000000000.00</span> <br>
-    <input type="text" id="input-number">
+
+    <span id="cfa-by-id">1000005500000000</span> <br>
 </body>
 <script src="../dist/ivoiro.js"></script>
 <script>
     var ivoiro = new Ivoiro({
-        idName: 'input-number'
+        idName: 'cfa-by-id'
     });
 
     var ivoiro2 = new Ivoiro({
@@ -34,6 +35,7 @@
     });
 
     ivoiro2.formatToCfa(' ', true);
+    ivoiro.formatToCfa(' ', true);
 </script>
 
 </html>
