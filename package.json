@@ -1,7 +1,7 @@
 {
     "name": "ivoiro",
-    "version": "1.0.0",
-    "description": "Librairie Javascript pour la gestion des format des montants et numéro de téléphone version ivoirien",
+    "version": "0.1.0",
+    "description": "Librairie Javascript pour la gestion des format des montants et numéro de téléphone version ivoirienne",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
