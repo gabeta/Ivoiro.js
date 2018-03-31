@@ -4,5 +4,6 @@ declare class Ivoiro {
     property: any;
     constructor(propertyGetter: Object);
     initialyzeProperty(): void;
-    formatToCfa(separator: String, prefix: false): String;
+    formatToCfa(separator: string, prefix: Boolean): void;
+    translateNumber(number: string, separator: string): String;
 }
