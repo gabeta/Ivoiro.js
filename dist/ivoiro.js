@@ -5,6 +5,13 @@ var Ivoiro = /** @class */ (function () {
         this.initialyzeProperty();
         console.log(this.property);
     }
+    /**
+     * Initialisation du composant html servant à gérer les données
+     *
+     * Cette fonction sert principalement à vérifie si le composant html
+     * est récupérer par son id ou sa className ensuite elle récupère
+     * l'élement par le moyen spécifié lors de l'initialisation du composant
+     */
     Ivoiro.prototype.initialyzeProperty = function () {
         var _this = this;
         Object.keys(this.propertyGetter)
@@ -35,25 +42,12 @@ var Ivoiro = /** @class */ (function () {
         var text = '';
         switch (splicer) {
             case 0:
-                for (var i = 0; i < number.length; i++) {
-                    var sp = "";
-                    if (i != 0 && ((i + 1) % 3) == 0 && i < (number.length - 1)) {
-                        sp = separator;
-                    }
-                    text += numberArray[i] + sp;
-                }
+                text += this.translator(numberArray, separator, 0);
                 break;
             case 1:
                 var j = 0;
                 text += numberArray[j] + separator;
-                for (var i = (j + 1); i < number.length; i++) {
-                    var sp = "";
-                    if (i != 0 && ((i) % 3) == 0 && i < (number.length - 1)) {
-                        console.log(i);
-                        sp = separator;
-                    }
-                    text += numberArray[i] + sp;
-                }
+                text += this.translator(numberArray, separator, 1);
                 break;
             case 2:
                 var j = 0;
@@ -61,18 +55,37 @@ var Ivoiro = /** @class */ (function () {
                     text += numberArray[index];
                 }
                 text += separator;
-                for (var i = (j + 2); i < number.length; i++) {
-                    var sp_1 = "";
-                    if (i != 0 && ((i - 1) % 3) == 0 && i < (number.length - 1)) {
-                        console.log(i);
-                        sp_1 = separator;
-                    }
-                    text += numberArray[i] + sp_1;
-                }
+                text += this.translator(numberArray, separator, 2);
                 break;
             default:
         }
         return text;
+    };
+    Ivoiro.prototype.translator = function (numberArray, separator, splicer) {
+        var text = '';
+        for (var i = splicer; i < numberArray.length; i++) {
+            var sp = "";
+            if (i != splicer && (this.translatorSlicer(i, splicer) % 3) == 0 && i < (numberArray.length - 1)) {
+                sp = separator;
+            }
+            text += numberArray[i] + sp;
+        }
+        return text;
+    };
+    Ivoiro.prototype.translatorSlicer = function (i, splicer) {
+        var operator = 1;
+        switch (splicer) {
+            case 0:
+                operator = i + 1;
+                break;
+            case 1:
+                operator = i;
+                break;
+            case 2:
+                operator = i - 1;
+                break;
+        }
+        return operator;
     };
     return Ivoiro;
 }());

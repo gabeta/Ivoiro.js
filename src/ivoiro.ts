@@ -11,6 +11,13 @@ class Ivoiro {
         console.log(this.property)
     }
 
+    /**
+     * Initialisation du composant html servant à gérer les données
+     * 
+     * Cette fonction sert principalement à vérifie si le composant html 
+     * est récupérer par son id ou sa className ensuite elle récupère 
+     * l'élement par le moyen spécifié lors de l'initialisation du composant
+     */
     initialyzeProperty() {
         Object.keys(this.propertyGetter)
             .map((propertyType) => {
@@ -46,25 +53,12 @@ class Ivoiro {
 
         switch (splicer) {
             case 0:
-                for (var i = 0; i < number.length; i++){
-                    var sp = ""
-                    if (i != 0 && ((i + 1) % 3) == 0 && i < (number.length - 1)) {
-                        sp = separator
-                    }
-                    text += numberArray[i] + sp
-                }
+                text += this.translator(numberArray,separator,0);
                 break;
             case 1:
                 var j = 0;
                 text += numberArray[j] + separator
-                for (var i = (j + 1); i < number.length; i++) {
-                    var sp = ""
-                    if (i != 0 && ((i) % 3) == 0 && i < (number.length - 1)) {
-                        console.log(i)
-                        sp = separator
-                    }
-                    text += numberArray[i] + sp
-                }
+                text += this.translator(numberArray, separator, 1);
                 break;
             case 2:
                 var j = 0;
@@ -73,14 +67,7 @@ class Ivoiro {
                 }
                 text += separator
 
-                for (var i = (j + 2); i < number.length; i++) {
-                    let sp = ""
-                    if (i != 0 && ((i - 1) % 3) == 0 && i < (number.length - 1)) {
-                        console.log(i)
-                        sp = separator
-                    }
-                    text += numberArray[i] + sp
-                }
+                text += this.translator(numberArray, separator, 2);
                 break;
             default:
                 
@@ -89,5 +76,35 @@ class Ivoiro {
         return text;
     }
 
+    translator(numberArray: Array<any>, separator: string, splicer: number) : string {
+        let text = '';
+
+        for (var i = splicer; i < numberArray.length; i++) {
+            var sp = ""
+            if (i != splicer && ( this.translatorSlicer(i,splicer) % 3 ) == 0 && i < (numberArray.length - 1)) {
+                sp = separator
+            }
+            text += numberArray[i] + sp
+        }
+        return text;
+    }
+
+    translatorSlicer(i: number, splicer: number): number{
+        var operator = 1;
+        switch (splicer) {
+            case 0:
+                operator = i + 1;
+                break;
+            case 1:
+                operator = i;
+                break;
+            case 2:
+                operator = i - 1
+                break;
+
+        }
+
+        return operator;
+    }
     
 }
