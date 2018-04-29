@@ -37,7 +37,17 @@ class Ivoiro {
     * Cette fonction sert principalement à formatter un chiffre 
     * AU format CFA
     */
-    formatToCfa(separator: string, prefix: Boolean): void{
+    formatToCfa(separator: string, suffix: boolean = false ,symbole: string = ''): void{
+
+        let cfaSuffix = '';
+
+        if (suffix) {
+            if (symbole != '') {
+                cfaSuffix = symbole;
+            }else{ 
+                cfaSuffix = "FCFA";
+            }
+        }
 
         if(this.propertyType == 'className'){
             for (var i = 0; i < this.property.length; i++) {
@@ -45,7 +55,7 @@ class Ivoiro {
                 var text = intValue.toString();
                 if(text.length > 3) {
                     let value = this.translateNumber(text,separator);
-                    this.property[i].innerText = value
+                    this.property[i].innerText = value + ' ' + cfaSuffix
                 }
             }
 
@@ -54,7 +64,7 @@ class Ivoiro {
             var text = intValue.toString();
             if (text.length > 3) {
                 let value = this.translateNumber(text, separator);
-                this.property.innerText = value
+                this.property.innerText = value + ' ' + cfaSuffix
             }
         }
 

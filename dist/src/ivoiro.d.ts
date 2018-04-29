@@ -17,7 +17,7 @@ declare class Ivoiro {
     * Cette fonction sert principalement à formatter un chiffre
     * AU format CFA
     */
-    formatToCfa(separator: string, prefix: Boolean): void;
+    formatToCfa(separator: string, suffix?: boolean, symbole?: string): void;
     translateNumber(number: string, separator: string): String;
     translator(numberArray: Array<any>, separator: string, splicer: number): string;
     translatorSlicer(i: number, splicer: number): number;

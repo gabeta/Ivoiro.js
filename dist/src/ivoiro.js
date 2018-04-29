@@ -31,14 +31,25 @@ var Ivoiro = /** @class */ (function () {
     * Cette fonction sert principalement à formatter un chiffre
     * AU format CFA
     */
-    Ivoiro.prototype.formatToCfa = function (separator, prefix) {
+    Ivoiro.prototype.formatToCfa = function (separator, suffix, symbole) {
+        if (suffix === void 0) { suffix = false; }
+        if (symbole === void 0) { symbole = ''; }
+        var cfaSuffix = '';
+        if (suffix) {
+            if (symbole != '') {
+                cfaSuffix = symbole;
+            }
+            else {
+                cfaSuffix = "FCFA";
+            }
+        }
         if (this.propertyType == 'className') {
             for (var i = 0; i < this.property.length; i++) {
                 var intValue = parseInt(this.property[i].innerText);
                 var text = intValue.toString();
                 if (text.length > 3) {
                     var value = this.translateNumber(text, separator);
-                    this.property[i].innerText = value;
+                    this.property[i].innerText = value + ' ' + cfaSuffix;
                 }
             }
         }
@@ -47,7 +58,7 @@ var Ivoiro = /** @class */ (function () {
             var text = intValue.toString();
             if (text.length > 3) {
                 var value = this.translateNumber(text, separator);
-                this.property.innerText = value;
+                this.property.innerText = value + ' ' + cfaSuffix;
             }
         }
     };
