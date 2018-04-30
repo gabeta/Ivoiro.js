@@ -1,12 +1,14 @@
 import { expect } from 'chai';
 import 'mocha';
 
-describe('Hello function', () => {
+describe('CFA Format unit test', () => {
 
-    it('should return hello world', () => {
-        const result = 1;
-        document.createElement('span');
-        expect(result).to.equal(1);
+    it('should translate 1000 to 1.000', () => {
+        const result = '1000';
+        var span = document.createElement('span');
+        var dep = span.innerText = '1000';
+
+        expect(result).to.equal(dep);
     });
 
 });

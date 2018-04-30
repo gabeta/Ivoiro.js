@@ -5,6 +5,11 @@ class Ivoiro {
     propertyType: String;
     property: any;
 
+    /**
+     * Constructeur de la classe prend en paramètre l'object
+     * 
+     * @param propertyGetter 
+     */
     constructor(propertyGetter: Object) {
         this.propertyGetter = propertyGetter;
         this.initialyzeProperty();
@@ -32,11 +37,15 @@ class Ivoiro {
     }
 
     /**
-    * Formattage des valeurs en CFA
-    * 
-    * Cette fonction sert principalement à formatter un chiffre 
-    * AU format CFA
-    */
+     * Formattage des valeurs en CFA
+     *
+     * Cette fonction sert principalement à formatter un chiffre
+     * AU format CFA
+     * 
+     * @param separator 
+     * @param suffix 
+     * @param symbole 
+     */
     formatToCfa(separator: string, suffix: boolean = false ,symbole: string = ''): void{
 
         let cfaSuffix = '';
@@ -71,6 +80,13 @@ class Ivoiro {
 
     }
 
+    /**
+     * cette fonction transforme le chiffre en fonction de sa longeur 
+     * 
+     * @param number 
+     * @param separator 
+     */
+
     translateNumber(number: string, separator: string): String{
         
         let numberArray = number.split("");
@@ -103,6 +119,12 @@ class Ivoiro {
         return text;
     }
 
+    /**
+     * 
+     * @param numberArray 
+     * @param separator 
+     * @param splicer 
+     */
     translator(numberArray: Array<any>, separator: string, splicer: number) : string {
         let text = '';
 
@@ -116,6 +138,13 @@ class Ivoiro {
         return text;
     }
 
+    /**
+     * Cette fonction génère l'opérateur qui permet de savoir à quel moment 
+     * mettre le separateur 
+     * 
+     * @param i 
+     * @param splicer 
+     */
     translatorSlicer(i: number, splicer: number): number{
         var operator = 1;
         switch (splicer) {

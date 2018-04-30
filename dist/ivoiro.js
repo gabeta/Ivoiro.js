@@ -1,5 +1,10 @@
 "use strict";
 var Ivoiro = /** @class */ (function () {
+    /**
+     * Constructeur de la classe prend en paramètre l'object
+     *
+     * @param propertyGetter
+     */
     function Ivoiro(propertyGetter) {
         this.propertyGetter = propertyGetter;
         this.initialyzeProperty();
@@ -26,11 +31,15 @@ var Ivoiro = /** @class */ (function () {
         });
     };
     /**
-    * Formattage des valeurs en CFA
-    *
-    * Cette fonction sert principalement à formatter un chiffre
-    * AU format CFA
-    */
+     * Formattage des valeurs en CFA
+     *
+     * Cette fonction sert principalement à formatter un chiffre
+     * AU format CFA
+     *
+     * @param separator
+     * @param suffix
+     * @param symbole
+     */
     Ivoiro.prototype.formatToCfa = function (separator, suffix, symbole) {
         if (suffix === void 0) { suffix = false; }
         if (symbole === void 0) { symbole = ''; }
@@ -62,6 +71,12 @@ var Ivoiro = /** @class */ (function () {
             }
         }
     };
+    /**
+     * cette fonction transforme le chiffre en fonction de sa longeur
+     *
+     * @param number
+     * @param separator
+     */
     Ivoiro.prototype.translateNumber = function (number, separator) {
         var numberArray = number.split("");
         var textLength = number.length;
@@ -88,6 +103,12 @@ var Ivoiro = /** @class */ (function () {
         }
         return text;
     };
+    /**
+     *
+     * @param numberArray
+     * @param separator
+     * @param splicer
+     */
     Ivoiro.prototype.translator = function (numberArray, separator, splicer) {
         var text = '';
         for (var i = splicer; i < numberArray.length; i++) {
@@ -99,6 +120,13 @@ var Ivoiro = /** @class */ (function () {
         }
         return text;
     };
+    /**
+     * Cette fonction génère l'opérateur qui permet de savoir à quel moment
+     * mettre le separateur
+     *
+     * @param i
+     * @param splicer
+     */
     Ivoiro.prototype.translatorSlicer = function (i, splicer) {
         var operator = 1;
         switch (splicer) {
