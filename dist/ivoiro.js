@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Ivoiro = /** @class */ (function () {
     /**
      * Constructeur de la classe prend en paramètre l'object
@@ -144,3 +145,4 @@ var Ivoiro = /** @class */ (function () {
     };
     return Ivoiro;
 }());
+exports.Ivoiro = Ivoiro;

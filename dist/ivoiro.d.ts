@@ -50,3 +50,4 @@ declare class Ivoiro {
      */
     translatorSlicer(i: number, splicer: number): number;
 }
+export { Ivoiro };
