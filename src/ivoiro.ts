@@ -1,4 +1,4 @@
-export default class Ivoiro {
+class Ivoiro {
 
     propertyGetter: Object;
     propertyType: String;
