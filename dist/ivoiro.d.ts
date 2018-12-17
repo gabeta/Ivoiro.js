@@ -1,13 +1,13 @@
 declare class Ivoiro {
-    propertyGetter: Object;
-    propertyName: string;
-    property: any;
+    options: Object;
+    targetName: string;
+    target: any;
     /**
      * Constructeur de la classe prend en paramètre l'object
      *
-     * @param {object} propertyGetter
+     * @param {object} options
      */
-    constructor(propertyGetter: Object);
+    constructor(options: Object);
     /**
      * Initialisation du composant html servant à gérer les données
      *

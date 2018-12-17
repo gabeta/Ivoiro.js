@@ -1,16 +1,16 @@
 class Ivoiro {
 
-  propertyGetter: Object;
-  propertyName: string;
-  property: any;
+  options: Object;
+  targetName: string;
+  target: any;
 
   /**
    * Constructeur de la classe prend en paramètre l'object
    * 
-   * @param {object} propertyGetter 
+   * @param {object} options 
    */
-  constructor(propertyGetter: Object) {
-    this.propertyGetter = propertyGetter;
+  constructor(options: Object) {
+    this.options = options;
     this.initialyzeProperty();
   }
 
@@ -22,15 +22,16 @@ class Ivoiro {
    * l'élement par le moyen spécifié lors de l'initialisation du composant
    */
   initialyzeProperty() {
-    Object.keys(this.propertyGetter)
-      .map((propertyName) => {
-        let property = this.propertyGetter[propertyName];
-        this.propertyName = propertyName;
+    Object.keys(this.options)
+      .map((key) => {
+        key = key.toLowerCase();
+        let option = this.options[key];
+        this.targetName = key;
 
-        if (propertyName === 'id') {
-          this.property = document.getElementById(property);
+        if (option === 'id') {
+          this.target = document.getElementById(option);
         } else {
-          this.property = document.getElementsByClassName(property);
+          this.target = document.getElementsByClassName(option);
         }
       });
   }
@@ -57,23 +58,23 @@ class Ivoiro {
       }
     }
 
-    if (this.propertyName == 'className'){
-      for (let i = 0; i < this.property.length; i++) {
-        let intValue = parseInt(this.property[i].innerText);
+    if (this.targetName == 'className' || this.targetName == 'class'){
+      for (let i = 0; i < this.target.length; i++) {
+        let intValue = parseInt(this.target[i].innerText);
         let text = intValue.toString();
 
         if (text.length > 3) {
           let value = this.translatenumber(text, separator);
-          this.property[i].innerText = `${value} ${cfaSuffix}`;
+          this.target[i].innerText = `${value} ${cfaSuffix}`;
         }
       }
     } else {
-      let intValue = parseInt(this.property.innerText);
+      let intValue = parseInt(this.target.innerText);
       let text = intValue.toString();
 
       if (text.length > 3) {
         let value = this.translatenumber(text, separator);
-        this.property.innerText = `${value} ${cfaSuffix}`;
+        this.target.innerText = `${value} ${cfaSuffix}`;
       }
     }
   }

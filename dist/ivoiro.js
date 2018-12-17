@@ -1,12 +1,11 @@
-"use strict";
 var Ivoiro = /** @class */ (function () {
     /**
      * Constructeur de la classe prend en paramètre l'object
      *
-     * @param {object} propertyGetter
+     * @param {object} options
      */
-    function Ivoiro(propertyGetter) {
-        this.propertyGetter = propertyGetter;
+    function Ivoiro(options) {
+        this.options = options;
         this.initialyzeProperty();
     }
     /**
@@ -18,15 +17,16 @@ var Ivoiro = /** @class */ (function () {
      */
     Ivoiro.prototype.initialyzeProperty = function () {
         var _this = this;
-        Object.keys(this.propertyGetter)
-            .map(function (propertyName) {
-            var property = _this.propertyGetter[propertyName];
-            _this.propertyName = propertyName;
-            if (propertyName === 'id') {
-                _this.property = document.getElementById(property);
+        Object.keys(this.options)
+            .map(function (key) {
+            key = key.toLowerCase();
+            var option = _this.options[key];
+            _this.targetName = key;
+            if (option === 'id') {
+                _this.target = document.getElementById(option);
             }
             else {
-                _this.property = document.getElementsByClassName(property);
+                _this.target = document.getElementsByClassName(option);
             }
         });
     };
@@ -53,22 +53,22 @@ var Ivoiro = /** @class */ (function () {
                 cfaSuffix = "FCFA";
             }
         }
-        if (this.propertyName == 'className') {
-            for (var i = 0; i < this.property.length; i++) {
-                var intValue = parseInt(this.property[i].innerText);
+        if (this.targetName == 'className' || this.targetName == 'class') {
+            for (var i = 0; i < this.target.length; i++) {
+                var intValue = parseInt(this.target[i].innerText);
                 var text = intValue.toString();
                 if (text.length > 3) {
                     var value = this.translatenumber(text, separator);
-                    this.property[i].innerText = value + " " + cfaSuffix;
+                    this.target[i].innerText = value + " " + cfaSuffix;
                 }
             }
         }
         else {
-            var intValue = parseInt(this.property.innerText);
+            var intValue = parseInt(this.target.innerText);
             var text = intValue.toString();
             if (text.length > 3) {
                 var value = this.translatenumber(text, separator);
-                this.property.innerText = value + " " + cfaSuffix;
+                this.target.innerText = value + " " + cfaSuffix;
             }
         }
     };
