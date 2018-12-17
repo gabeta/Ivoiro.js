@@ -1,3 +1,4 @@
+(function() {
 class Ivoiro {
 
   options: Object;
@@ -86,7 +87,7 @@ class Ivoiro {
    * @param {string} separator
    * @param {string}
    */
-  private translateNumber(number: string, separator: string): string {
+  translateNumber(number: string, separator: string): string {
 
     let numberArray = number.split("");
     let textLength = number.length;
@@ -124,7 +125,7 @@ class Ivoiro {
    * @param {number} splicer
    * @param {string}
    */
-  private translator(numberArray: Array<any>, separator: string, splicer: number) : string {
+  translator(numberArray: Array<any>, separator: string, splicer: number) : string {
     let text = '';
 
     for (let i = splicer; i < numberArray.length; i++) {
@@ -176,3 +177,35 @@ class Ivoiro {
     return new Ivoiro(options);
   }
 }
+
+/**
+ * Application des systêmes d'importation
+ */
+if (typeof module === 'object') {
+  module.exports = Ivoiro;
+  module.exports.default = Ivoiro;
+}
+
+if (typeof window == 'object') {
+  window['Ivoiro'] = Ivoiro;
+}
+
+if (typeof define == 'function' && define.amd) {
+  const define = (id, factory) => {
+    if (typeof exports !== 'undefined') {
+      factory(require, exports);
+    } else {
+      factory(function(value) {
+        return window[value];
+      }, (window[id] = {}));
+    }
+  };
+
+  define('Ivoiro', function (require, exports) {
+    //If have dependencies, get them here
+    var Ivoiro = require('Ivoiro');
+    // Attach properties to exports.
+    exports.Ivoiro = Ivoiro;
+  });
+}
+})();

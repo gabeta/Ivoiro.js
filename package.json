@@ -4,8 +4,8 @@
   "description": "Librairie Javascript pour la gestion des format des montants et numéro de téléphone version ivoirienne",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register -r jsdom-global/register test/**/*.spec.ts",
-    "build": "tsc src/ivoiro.ts --sourceMap -d --outDir dist"
+    "test": "mocha -r ts-node/register -r jsdom-global/register test/*.spec.ts",
+    "build": "tsc src/ivoiro.ts --sourceMap --module amd -d --outDir dist"
   },
   "keywords": [
     "Côte d'ivoire",
