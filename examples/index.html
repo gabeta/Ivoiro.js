@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ivoiro, le plugin pour vous faciliter la tâche</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ivoiro, le plugin pour vous faciliter la tâche</title>
 </head>
-
 <body>
-    <h1>Formattage des montants</h1>
+  <h1>Formattage des montants</h1>
 
-    <span class="cfa-format">1</span> <br>
-    <span class="cfa-format">10</span> <br>
-    <span class="cfa-format">100</span> <br>
-    <span class="cfa-format">1000</span> <br>
-    <span class="cfa-format">10000</span> <br>
-    <span class="cfa-format">100000</span> <br>
-    <span class="cfa-format">1000000</span> <br>
-    <span class="cfa-format">10000000</span> <br>
-    <span class="cfa-format">100000000</span> <br>
-    <span class="cfa-format">1000000000</span> <br>
-    <span class="cfa-format">10000000000</span> <br>
-    <span class="cfa-format">100000000000.00</span> <br>
+  <span class="cfa-format">1</span> <br>
+  <span class="cfa-format">10</span> <br>
+  <span class="cfa-format">100</span> <br>
+  <span class="cfa-format">1000</span> <br>
+  <span class="cfa-format">10000</span> <br>
+  <span class="cfa-format">100000</span> <br>
+  <span class="cfa-format">1000000</span> <br>
+  <span class="cfa-format">10000000</span> <br>
+  <span class="cfa-format">100000000</span> <br>
+  <span class="cfa-format">1000000000</span> <br>
+  <span class="cfa-format">10000000000</span> <br>
+  <span class="cfa-format">100000000000.00</span> <br>
 
-    <span id="cfa-by-id">1000005500000000</span> <br>
+  <span id="cfa-by-id">1000005500000000</span> <br>
 
-    <hr>
-    <h1>Formattage du numéro de téléphone</h1>
-
-</body>
-<script src="../dist/ivoiro.js"></script>
-<script>
+  <hr>
+  <h1>Formattage du numéro de téléphone</h1>
+  <script type="text/javascript" src="../dist/ivoiro.js"></script>
+  <script type="text/javascript">
     var ivoiro = new Ivoiro({
-        id: 'cfa-by-id'
+      id: 'cfa-by-id'
     });
 
     var ivoiro2 = new Ivoiro({
-        className: 'cfa-format'
+      className: 'cfa-format'
     });
 
     ivoiro2.formatToCfa(' ', true, 'Fcfa');
     ivoiro.formatToCfa(' ');
-</script>
-
+  </script>
+</body>
 </html>
