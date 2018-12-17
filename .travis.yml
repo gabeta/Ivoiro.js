@@ -1,0 +1,16 @@
+language: node_js
+dist: trusty
+
+branches:
+  only:
+    - master
+
+cache: npm
+
+sudo: false
+
+before_script:
+  - npm install
+
+script:
+  - npm run test
