@@ -23,6 +23,7 @@
   <span class="cfa-format">100000000000.00</span> <br>
 
   <span id="cfa-by-id">1000005500000000</span> <br>
+  <span id="cfa-initial-id">1000005500000000</span> <br>
 
   <hr>
   <h1>Formattage du numéro de téléphone</h1>
@@ -38,6 +39,11 @@
 
     ivoiro2.formatToCfa(' ', true, 'Fcfa');
     ivoiro.formatToCfa(' ');
+
+    var ivoiro3 = Ivoiro.initialize({
+      id: "cfa-initial-id"
+    });
+    ivoiro3.formatToCfa(' ');
   </script>
 </body>
 </html>

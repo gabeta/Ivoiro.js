@@ -21,14 +21,14 @@ class Ivoiro {
    * est récupéré par son id ou sa className ensuite elle récupère 
    * l'élement par le moyen spécifié lors de l'initialisation du composant
    */
-  initialyzeProperty() {
+  private initialyzeProperty() {
     Object.keys(this.options)
       .map((key) => {
         key = key.toLowerCase();
         let option = this.options[key];
         this.targetName = key;
 
-        if (option === 'id') {
+        if (key === 'id') {
           this.target = document.getElementById(option);
         } else {
           this.target = document.getElementsByClassName(option);
@@ -47,7 +47,7 @@ class Ivoiro {
    * @param {string} symbole 
    * @return {void}
    */
-  formatToCfa(separator: string, suffix: boolean = false ,symbole: string = ''): void {
+  formatToCfa(separator: string, suffix: boolean = false, symbole: string = ''): void {
     let cfaSuffix = '';
 
     if (suffix) {
@@ -64,7 +64,7 @@ class Ivoiro {
         let text = intValue.toString();
 
         if (text.length > 3) {
-          let value = this.translatenumber(text, separator);
+          let value = this.translateNumber(text, separator);
           this.target[i].innerText = `${value} ${cfaSuffix}`;
         }
       }
@@ -73,7 +73,7 @@ class Ivoiro {
       let text = intValue.toString();
 
       if (text.length > 3) {
-        let value = this.translatenumber(text, separator);
+        let value = this.translateNumber(text, separator);
         this.target.innerText = `${value} ${cfaSuffix}`;
       }
     }
@@ -86,7 +86,7 @@ class Ivoiro {
    * @param {string} separator
    * @param {string}
    */
-   translatenumber(number: string, separator: string): string {
+  private translateNumber(number: string, separator: string): string {
 
     let numberArray = number.split("");
     let textLength = number.length;
@@ -124,7 +124,7 @@ class Ivoiro {
    * @param {number} splicer
    * @param {string}
    */
-   translator(numberArray: Array<any>, separator: string, splicer: number) : string {
+  private translator(numberArray: Array<any>, separator: string, splicer: number) : string {
     let text = '';
 
     for (let i = splicer; i < numberArray.length; i++) {
@@ -148,7 +148,7 @@ class Ivoiro {
    * @param {number} splicer
    * @return {number}
    */
-   translatorSlicer(i: number, splicer: number): number {
+  translatorSlicer(i: number, splicer: number): number {
     let operator = 1;
 
     switch (splicer) {
@@ -164,5 +164,15 @@ class Ivoiro {
     }
 
     return operator;
+  }
+
+  /**
+   * Crée une instance de Ivoiro rapidement
+   * 
+   * @param {Object} options
+   * @return {Ivoiro}
+   */
+  static initialize(options: Object) {
+    return new Ivoiro(options);
   }
 }

@@ -15,7 +15,7 @@ declare class Ivoiro {
      * est récupéré par son id ou sa className ensuite elle récupère
      * l'élement par le moyen spécifié lors de l'initialisation du composant
      */
-    initialyzeProperty(): void;
+    private initialyzeProperty();
     /**
      * Formattage des valeurs en CFA
      *
@@ -35,7 +35,7 @@ declare class Ivoiro {
      * @param {string} separator
      * @param {string}
      */
-    translatenumber(number: string, separator: string): string;
+    private translateNumber(number, separator);
     /**
      * Permet de fair la compilation
      *
@@ -44,7 +44,7 @@ declare class Ivoiro {
      * @param {number} splicer
      * @param {string}
      */
-    translator(numberArray: Array<any>, separator: string, splicer: number): string;
+    private translator(numberArray, separator, splicer);
     /**
      * Génère l'opérateur qui permet de savoir à quel moment mettre le separateur
      *
@@ -53,4 +53,11 @@ declare class Ivoiro {
      * @return {number}
      */
     translatorSlicer(i: number, splicer: number): number;
+    /**
+     * Crée une instance de Ivoiro rapidement
+     *
+     * @param {Object} options
+     * @return {Ivoiro}
+     */
+    static initialize(options: Object): Ivoiro;
 }

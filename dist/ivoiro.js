@@ -22,7 +22,7 @@ var Ivoiro = /** @class */ (function () {
             key = key.toLowerCase();
             var option = _this.options[key];
             _this.targetName = key;
-            if (option === 'id') {
+            if (key === 'id') {
                 _this.target = document.getElementById(option);
             }
             else {
@@ -58,7 +58,7 @@ var Ivoiro = /** @class */ (function () {
                 var intValue = parseInt(this.target[i].innerText);
                 var text = intValue.toString();
                 if (text.length > 3) {
-                    var value = this.translatenumber(text, separator);
+                    var value = this.translateNumber(text, separator);
                     this.target[i].innerText = value + " " + cfaSuffix;
                 }
             }
@@ -67,7 +67,7 @@ var Ivoiro = /** @class */ (function () {
             var intValue = parseInt(this.target.innerText);
             var text = intValue.toString();
             if (text.length > 3) {
-                var value = this.translatenumber(text, separator);
+                var value = this.translateNumber(text, separator);
                 this.target.innerText = value + " " + cfaSuffix;
             }
         }
@@ -79,7 +79,7 @@ var Ivoiro = /** @class */ (function () {
      * @param {string} separator
      * @param {string}
      */
-    Ivoiro.prototype.translatenumber = function (number, separator) {
+    Ivoiro.prototype.translateNumber = function (number, separator) {
         var numberArray = number.split("");
         var textLength = number.length;
         var splicer = textLength % 3;
@@ -144,6 +144,15 @@ var Ivoiro = /** @class */ (function () {
                 break;
         }
         return operator;
+    };
+    /**
+     * Crée une instance de Ivoiro rapidement
+     *
+     * @param {Object} options
+     * @return {Ivoiro}
+     */
+    Ivoiro.initialize = function (options) {
+        return new Ivoiro(options);
     };
     return Ivoiro;
 }());
