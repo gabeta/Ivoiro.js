@@ -1,7 +1,7 @@
 class Ivoiro {
 
   propertyGetter: Object;
-  propertyType: string;
+  propertyName: string;
   property: any;
 
   /**
@@ -23,11 +23,11 @@ class Ivoiro {
    */
   initialyzeProperty() {
     Object.keys(this.propertyGetter)
-      .map((propertyType) => {
-        let property = this.propertyGetter[propertyType];
-        this.propertyType = propertyType;
+      .map((propertyName) => {
+        let property = this.propertyGetter[propertyName];
+        this.propertyName = propertyName;
 
-        if (propertyType === 'id') {
+        if (propertyName === 'id') {
           this.property = document.getElementById(property);
         } else {
           this.property = document.getElementsByClassName(property);
@@ -57,35 +57,35 @@ class Ivoiro {
       }
     }
 
-    if (this.propertyType == 'className'){
+    if (this.propertyName == 'className'){
       for (let i = 0; i < this.property.length; i++) {
         let intValue = parseInt(this.property[i].innerText);
-        let text = intValue.tostring();
+        let text = intValue.toString();
 
-        if(text.length > 3) {
-          let value = this.translateNumber(text,separator);
-          this.property[i].innerText = value + ' ' + cfaSuffix
+        if (text.length > 3) {
+          let value = this.translatenumber(text, separator);
+          this.property[i].innerText = `${value} ${cfaSuffix}`;
         }
       }
     } else {
       let intValue = parseInt(this.property.innerText);
-      let text = intValue.tostring();
+      let text = intValue.toString();
 
       if (text.length > 3) {
-        let value = this.translateNumber(text, separator);
-        this.property.innerText = value + ' ' + cfaSuffix
+        let value = this.translatenumber(text, separator);
+        this.property.innerText = `${value} ${cfaSuffix}`;
       }
     }
   }
 
   /**
-   * cette fonction transforme le chiffre en fonction de sa longeur 
+   * Transforme le chiffre en fonction de sa longeur 
    * 
    * @param {string} number
    * @param {string} separator
    * @param {string}
    */
-   translateNumber(number: string, separator: string): string {
+   translatenumber(number: string, separator: string): string {
 
     let numberArray = number.split("");
     let textLength = number.length;
@@ -97,15 +97,11 @@ class Ivoiro {
         text += this.translator(numberArray,separator,0);
         break;
       case 1:
-        let j = 0;
-
-        text += numberArray[j] + separator;
+        text += numberArray[0] + separator;
         text += this.translator(numberArray, separator, 1);
 
         break;
       case 2:
-        let j = 0;
-
         for (let index = 0; index < 2; index++) {
           text += numberArray[index];
         }
@@ -124,7 +120,7 @@ class Ivoiro {
    * 
    * @param {Array} numberArray 
    * @param {string} separator 
-   * @param {Number} splicer
+   * @param {number} splicer
    * @param {string}
    */
    translator(numberArray: Array<any>, separator: string, splicer: number) : string {
@@ -151,7 +147,7 @@ class Ivoiro {
    * @param {number} splicer
    * @return {number}
    */
-   translatorSlicer(i: number, splicer: number): number{
+   translatorSlicer(i: number, splicer: number): number {
     let operator = 1;
 
     switch (splicer) {
